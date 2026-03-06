@@ -1,0 +1,19 @@
+numpy==1.26.4
+accelerate
+diffusers[torch]
+transformers
+safetensors
+omegaconf
+tensorboard
+huggingface-hub
+einops
+timm
+scipy
+scikit-learn
+scikit-image
+# torch-fidelity
+git+https://github.com/LTH14/torch-fidelity.git@master#egg=torch-fidelity
+opencv-python-headless
+torchmetrics
+submitit
+pynvml

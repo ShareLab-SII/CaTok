@@ -1,0 +1,65 @@
+trainer:
+  target: catok.engine.meanflow_trainer.MeanFlowTrainer
+  params:
+    num_epoch: 80
+    valid_size: 64
+    blr: 1e-4
+    cosine_lr: True
+    warmup_epochs: 0
+    batch_size: 64
+    # batch_size: 1
+    num_workers: 16
+    pin_memory: True
+    grad_accum_steps: 1
+    precision: 'fp16'
+    max_grad_norm: 3.0
+    enable_ema: True
+    save_every: 10000
+    sample_every: 10000
+    fid_every: 250000000000
+    result_folder: "./output/catok_b_256"
+    log_dir: "./output/catok_b_256"
+    cfg: 1.0
+    compile: False
+    model:
+      target: catok.tokenizer.meanflow_slot.MeanFlowSlot
+      params:
+        encoder: 'vit_base_patch8'
+        enc_img_size: 256
+        enc_causal: True
+        enc_use_mlp: False
+        num_slots: 256
+        slot_dim: 16
+        norm_slots: True
+        dit_model: 'DiT-B-4'
+        vae: './pretrained/mar-vae-kl16'
+        enable_nest: False
+        enable_nest_after: 40
+        enable_mf_after: 10
+        enable_cfg_after: 10000
+        use_repa: True
+        repa_encoder: dinov2
+        eval_fid: False
+        fid_stats: 'fid_stats/adm_in256_stats.npz'
+        num_sampling_steps: '250'
+        ckpt_path: null
+        flow_ratio: 0.75
+        cfg_w: 1.0
+        use_dist: True
+        bind_t: True
+        use_vq: False
+        use_lpips: False
+
+    dataset:
+      target: catok.utils.datasets.ImageNet
+      params:
+        root: ./dataset/imagenet/
+        split: train
+        img_size: 256
+
+    test_dataset:
+      target: catok.utils.datasets.ImageNet
+      params:
+        root: ./dataset/imagenet/
+        split: val
+        img_size: 256
