@@ -8,7 +8,7 @@
 <sup>2</sup> Shanghai Innovation Institute <br>
 <sup>3</sup> Shanghai Key Laboratory of Multimodal Embodied AI
 
-[[`Paper CVPR-26`](#)]
+[[`Paper CVPR-26`](https://arxiv.org/pdf/2603.06449)]
 [[`Project Page`](https://sharelab-sii.github.io/catok-web/)]
 </h4>
 </div>
